@@ -212,54 +212,115 @@ tags-input .autocomplete .suggestion-item em {
 }
 
 // PatternFly 4 nav overrides
-
-$pf-l-page__active-sidebar--BackgroundColor: rgba(255,255,255,.07);
-
-.pf-c-nav__link {
-  --pf-c-nav__list-link--Color: #{$color-pf-black-300};
+.pf-l-page__sidebar {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  background-color: #292e34 !important;
+  overflow-y: auto !important;
 }
 
-.pf-c-nav__list {
-  .pf-c-nav__link {
-    &:active {
-      --pf-c-nav__list-link--active--Color: #{$color-pf-white};
-    }
-    &:focus {
-      --pf-c-nav__list-link--focus--Color: #{$color-pf-white};
-    }
-    &:hover {
-      --pf-c-nav__list-link--hover--Color: #{$color-pf-white};
-    }
-  }
-  .pf-m-current > .pf-c-nav__link {
-    --pf-c-nav__list-link--m-current--Color: #{$color-pf-white};
-  }
+.pf-c-nav__list > .pf-c-nav__item {
+  border-bottom: 1px solid #030303 !important;
+  font-size: 1.25em;
+}
+
+.pf-c-nav__list > .pf-c-nav__item:not(:first-child) {
+  margin-top: 0 !important;
+}
+
+.pf-c-nav__list > .pf-c-nav__item.pf-m-current {
+  background-color: #393f44 !important;
+}
+
+.pf-c-nav__list > .pf-c-nav__item.pf-m-current:not(.pf-m-expanded) .pf-c-nav__link::after {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 100% !important;
+  width: 3px !important;
+  background-color: #39a5dc !important;
+}
+
+.pf-c-nav__list .pf-c-nav__link {
+  color: #d1d1d1 !important;
+  padding-top: 17px !important;
+  padding-bottom: 17px !important;
+  padding-left: 40px !important;
+  align-items: center !important;
+}
+
+.pf-c-nav__simple-list .pf-c-nav__link:active,
+.pf-c-nav__simple-list .pf-c-nav__link:focus {
+  color: #d1d1d1 !important;
+  background-color: transparent !important;
+}
+
+.pf-c-nav__simple-list .pf-c-nav__link:hover,
+.pf-c-nav__simple-list .pf-c-nav__link.pf-m-current,
+.pf-c-nav__list .pf-c-nav__link:hover {
+  color: #fff !important;
+  background-color: #4d5258 !important;
+}
+
+.pf-c-nav__list .pf-c-nav__link:active,
+.pf-c-nav__list .pf-c-nav__link:focus {
+  color: #d1d1d1 !important;
+}
+
+.pf-c-nav__list .pf-c-nav__link::after {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.pf-c-nav__list .pf-m-current.pf-c-nav__link,
+.pf-c-nav__list .pf-m-current > .pf-c-nav__link {
+  font-weight: 600 !important;
+  color: #fff !important;
 }
 
 .pf-c-nav__simple-list .pf-c-nav__link {
-  --pf-c-nav__simple-list-link--Color: #{$color-pf-black-300};
-  &:focus {
-    --pf-c-nav__simple-list-link--focus--BackgroundColor: #{$pf-l-page__active-sidebar--BackgroundColor};
-    --pf-c-nav__simple-list-link--focus--Color: #{$color-pf-white};
-  }
-  &:hover {
-    --pf-c-nav__simple-list-link--active--BackgroundColor: #{$pf-l-page__active-sidebar--BackgroundColor};
-    --pf-c-nav__simple-list-link--active--Color: #{$color-pf-white};
-  }
-  &.pf-m-current {
-    --pf-c-nav__simple-list-link--m-current--BackgroundColor: #{$pf-l-page__active-sidebar--BackgroundColor};
-    --pf-c-nav__simple-list-link--m-current--Color: #{$color-pf-white};
-  }
+  color: #d1d1d1 !important;
+  padding-top: 4px !important;
+  padding-right: 5px !important;
+  padding-bottom: 2px !important;
+  line-height: 25px !important;
+  font-size: 14px !important;
 }
 
-.pf-c-nav__toggle svg {
-  fill: $color-pf-black-300;
+.pf-c-nav__simple-list .pf-c-nav__link::after {
+  left: 0 !important;
+  width: 3px !important;
+  height: 100% !important;
 }
 
-.pf-l-page__sidebar {
-  --pf-l-page__sidebar--BackgroundColor: #151515;
-  @media(min-width: $grid-float-breakpoint) {
-    --pf-l-page__sidebar--BackgroundColor: var(--pf-l-page__header-brand--md--BackgroundColor);
-  }
-  --pf-l-page__sidebar--BoxShadow: none;
+.pf-c-nav__simple-list .pf-c-nav__link.pf-m-current::after {
+  display: block !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 3px !important;
+  height: 100% !important;
+  background-color: #39a5dc !important;
+}
+
+.pf-c-nav__toggle {
+  display: none !important;
+  color: #fff !important;
+  transition: transform 100ms !important;
+  transform: rotate(-90);
+  font-size: 24px;
+}
+
+.pf-c-nav__link:hover .pf-c-nav__toggle,
+.pf-c-nav__item.pf-m-expanded .pf-c-nav__toggle {
+  display: block !important;
+}
+
+.pf-m-expanded .pf-c-nav__toggle {
+  transform: rotate(0) !important;
+}
+
+.pf-c-nav__subnav {
+  max-height: 100% !important;
+  margin-top: 0 !important;
+  margin-bottom: 1rem !important;
 }
