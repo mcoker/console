@@ -253,11 +253,10 @@ tags-input .autocomplete .suggestion-item em {
 
   // `.pf-c-page` specificity required
   .pf-c-page__main-section {
-    --pf-c-page__main-section--Padding: 0;
-
-    @media screen and (min-width: $grid-float-breakpoint) {
-      --pf-c-page__main-section--Padding: 0;
-    }
+    --pf-c-page__main-section--PaddingTop: 0;
+    --pf-c-page__main-section--PaddingRight: 0;
+    --pf-c-page__main-section--PaddingBottom: 0;
+    --pf-c-page__main-section--PaddingLeft: 0;
   }
 }
 
@@ -289,9 +288,7 @@ tags-input .autocomplete .suggestion-item em {
     --pf-c-nav__list-link--hover--Color: #{$color-pf-white};
     --pf-c-nav__list-link--m-current--after--BackgroundColor: #{$color-pf-blue-300};
     --pf-c-nav__list-link--m-current--Color: var(--pf-c-nav__list-link--hover--Color);
-    --pf-c-nav__list-link--md--PaddingLeft: 32px;
     --pf-c-nav__list-link--PaddingBottom: var(--pf-c-nav__list-link--PaddingTop);
-    --pf-c-nav__list-link--PaddingLeft: 16px;
     --pf-c-nav__list-link--PaddingTop: 17px;
     // Simple List
     --pf-c-nav__simple-list-link--active--BackgroundColor: var(--pf-c-nav__list-link--hover--BackgroundColor);
@@ -299,9 +296,12 @@ tags-input .autocomplete .suggestion-item em {
     --pf-c-nav__simple-list-link--Color: var(--pf-c-nav__list-link--Color);
     --pf-c-nav__simple-list-link--focus--BackgroundColor: var(--pf-c-nav__list-link--hover--BackgroundColor);
     --pf-c-nav__simple-list-link--focus--Color: var(--pf-c-nav__list-link--hover--Color);
+    --pf-c-nav__simple-list-link--hover--BackgroundColor: var(--pf-c-nav__list-link--hover--BackgroundColor);
+    --pf-c-nav__simple-list-link--hover--Color: var(--pf-c-nav__list-link--hover--Color);
     --pf-c-nav__simple-list-link--focus--FontWeight: var(--pf-global--FontWeight--normal);
     --pf-c-nav__simple-list-link--m-current--BackgroundColor: var(--pf-c-nav__list-link--hover--BackgroundColor);
     --pf-c-nav__simple-list-link--m-current--Color: var(--pf-c-nav__simple-list-link--active--Color);
+    --pf-c-nav__simple-list-link--nested--PaddingLeft: var(--pf-c-nav__list-link--PaddingLeft);
     --pf-c-nav__simple-list-link--PaddingBottom: 2px;
     --pf-c-nav__simple-list-link--PaddingRight: 5px;
     --pf-c-nav__simple-list-link--PaddingTop: 4px;
@@ -312,19 +312,10 @@ tags-input .autocomplete .suggestion-item em {
     --pf-c-nav__list-toggle--PaddingRight: 0;
   }
 
-  .pf-c-nav__item .pf-c-nav__simple-list .pf-c-nav__link {
-    --pf-c-nav__subnav-item--PaddingLeft: var(--pf-c-nav__list-link--PaddingLeft);
-
-    @media screen and (min-width: $grid-float-breakpoint) {
-      --pf-c-nav__subnav-item--PaddingLeft: var(--pf-c-nav__list-link--md--PaddingLeft);
-    }
-  }
-
   .pf-c-nav__list {
     list-style: none; // turn off list-styles to fix bug in Edge
     > .pf-c-nav__item {
       border-bottom: 1px solid #{$color-pf-black};
-      font-size: 14px;
       margin-top: 0;
 
       &.pf-m-current {
@@ -345,6 +336,12 @@ tags-input .autocomplete .suggestion-item em {
           display: block;
         }
       }
+
+      > .pf-c-nav__link {
+        &:hover {
+          background-color: var(--pf-c-nav__list-link--hover--BackgroundColor);
+        }
+      }
     }
 
     .pf-c-nav__link {
@@ -360,6 +357,17 @@ tags-input .autocomplete .suggestion-item em {
     .pf-c-nav__link {
       font-size: 14px;
       line-height: 25px;
+
+      &::after {
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        width: var(--pf-c-nav__list-link--after--Width);
+        height: var(--pf-c-nav__list-link--after--Height);
+        content: "";
+        background-color: var(--pf-c-nav__list-link--after--BackgroundColor);
+        display: none;
+      }
 
       &.pf-m-current {
         &::after {
