@@ -524,3 +524,197 @@ button.pf-c-dropdown__menu-item.pf-m-disabled {
 .form-group--doubled-bottom-margin {
   margin-bottom: ($form-group-margin-bottom * 2);
 }
+
+// dark theme overrides
+.pf-theme-dark {
+  .co-disabled {
+    &::before {
+      background-color: var(--pf-global--BackgroundColor--100) !important;
+    }
+  }
+
+  // should be a PF hint component?
+  .co-hint-block {
+    background-color: var(--pf-global--BackgroundColor--400);
+    border: var(--pf-global--BorderSize--sm) solid var(--pf-global--BorderColor--300);
+    color: var(--pf-global--Color--100);
+  }
+
+  // pipelines -> triggers
+  .odc-namespaced-page__content {
+    background-color: var(--pf-global--BackgroundColor--200);
+
+    &.is-light {
+      background-color: var(--pf-global--BackgroundColor--100);
+    }
+  }
+
+  // should be an empty state component?
+  .cos-status-box {
+    &__title {
+      color: var(--pf-global--Color--100); // should be 200 or 100?
+    }
+
+    &__detail {
+      color: var(--pf-global--Color--200);
+    }
+  }
+
+  // workloads -> pods list view page
+  // --------------------------------
+
+  .co-namespace-bar {
+    border-bottom-color: var(--pf-global--BorderColor--100);
+  }
+
+  .oc-nav-header .pf-c-dropdown__toggle {
+    background-color: transparent;
+  }
+
+  .modal-content {
+    background-color: var(--pf-global--BackgroundColor--100);
+  }
+
+  // Details view
+  // -------------
+  // should use PF tabs?
+  .co-m-horizontal-nav__menu {
+    border-bottom-color: var(--pf-global--BorderColor--100);
+
+    &-item {
+      a,
+      button {
+        color: var(--pf-global--Color--200);
+
+        &:hover,
+        &:focus {
+          color: var(--pf-global--Color--100);
+
+          &::after {
+            background-color: var(--pf-global--Color--100);
+          }
+        }
+      }
+
+      &.co-m-horizontal-nav-item--active {
+        a,
+        button {
+          color: var(--pf-global--link--Color);
+
+          &::after {
+            background-color: var(--pf-global--link--Color);
+          }
+        }
+      }
+    }
+  }
+
+  .co-m-nav-title--detail {
+    border-bottom-color: var(--pf-global--BorderColor--100);
+  }
+
+  // mimicking cyan PF label - should use PF label?
+  .co-m-label {
+    background-color: var(--pf-global--BackgroundColor--300);
+    color: var(--pf-global--default-color--200);
+    border-color: var(--pf-global--palette--cyan-100);
+  }
+
+  // random status icons
+  .co-m-resource-namespace, .co-m-resource-project {
+    background-color: var(--pf-global--success-color--100);
+  }
+
+  .co-m-resource-daemonset, .co-m-resource-deployment, .co-m-resource-deploymentconfig, .co-m-resource-job, .co-m-resource-petset, .co-m-resource-replicaset, .co-m-resource-replicationcontroller,
+  .co-m-resource-alert, .co-m-resource-container {
+    background-color: var(--pf-global--info-color--100);
+  }
+
+  // project switcher
+  .dropdown-menu__divider {
+    background-color: var(--pf-global--BorderColor--100);
+  }
+
+  // dropdown menu item styles are being overridden by global link color styles - specificity issue
+  .pf-c-dropdown__menu-item {
+    &,
+    &:hover,
+    &:focus {
+      color: var(--pf-global--Color--100);
+    }
+  }
+
+  .co-namespace-selector__menu.pf-c-dropdown__menu li>a.bookmarker {
+    color: var(--pf-global--Color--200);
+
+    &:hover,
+    &:focus {
+      color: var(--pf-global--Color--100);
+      background: transparent;
+    }
+  }
+
+  .co-namespace-selector__menu.pf-c-dropdown__menu li:not(.co-namespace-selector__divider):hover,
+  .co-namespace-selector .dropdown-menu__autocomplete-filter li.active a {
+    background-color: var(--pf-c-dropdown__menu-item--hover--BackgroundColor);
+  }
+
+  .co-m-pane__body+.co-m-pane__body {
+    border-top-color: var(--pf-global--BorderColor--100);
+  }
+
+  .co-m-table-grid--bordered .co-m-table-grid__body .row, .co-m-table-grid--bordered .co-m-table-grid__headj {
+    border-bottom-color: var(--pf-global--BorderColor--100);
+  }
+
+  .co-m-table-grid--bordered .co-m-table-grid__body .row, .co-m-table-grid--bordered .co-m-table-grid__head {
+    border-bottom-color: var(--pf-global--BorderColor--100);
+  }
+
+  .modal-body-inner-shadow-covers {
+    background: none;
+    border: solid var(--pf-global--BorderColor--100);
+    border-width: var(--pf-global--BorderWidth--sm) 0;
+    padding-top: var(--pf-global--spacer--xl);
+  }
+
+  .modal-body tags-input .tags {
+    background: none;
+  }
+
+  .modal-body tags-input .tags .tag-item {
+    background: var(--pf-global--palette--cyan-50);
+  }
+
+  @media screen and (min-width: 768px) {
+    .pf-c-page__sidebar {
+      --pf-c-page__sidebar--BoxShadow: var(--pf-global--BoxShadow--lg-right);
+    }
+  }
+
+  [data-test="success-icon"] {
+    fill: var(--pf-global--success-color--100);
+  }
+
+  // graphs
+  .graph-title {
+    color: var(--pf-global--Color--100);
+  }
+  text tspan {
+    fill: var(--pf-global--Color--200) !important;
+  }
+
+  .yaml-editor__buttons {
+    background-color: var(--pf-global--BackgroundColor--100);
+    border-top: var(--pf-global--BorderWidth--sm) solid var(--pf-global--BorderColor--100);
+  }
+
+  // purple text in detail view
+  .co-text-node:link, .co-text-node:visited, .co-text-node:hover, .co-text-node:active {
+    color: var(--pf-global--palette--purple-300);
+  }
+
+  .help-block {
+    color: var(--pf-global--Color--200);
+  }
+}
