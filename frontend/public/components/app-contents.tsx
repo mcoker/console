@@ -213,7 +213,6 @@ const AppContents: React.FC<{}> = () => {
       </PageSection>
 
       <PageSection
-        variant={PageSectionVariants.light}
         id="content-scrollable"
         className="pf-page__main-section--flex"
         padding={{ default: 'noPadding' }}
