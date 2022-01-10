@@ -210,9 +210,11 @@ form.pf-c-form {
 }
 
 .pf-c-page__sidebar {
+  /*
   @media screen and (min-width: $pf-global--breakpoint--xl) {
     --pf-c-page__sidebar--BoxShadow: none;
   }
+  */
 
   // Perspective switcher
   &.pf-m-dark .pf-c-dropdown {
@@ -372,4 +374,53 @@ ul.pf-c-options-menu__menu,
 ul.pf-c-simple-list__list,
 ul.pf-c-tree-view__list {
   list-style: none !important;
+}
+
+
+// dark theme overrides - higher specificity because this stylesheet doesn't override everything
+.pf-theme-dark {
+  .pf-c-page__main-section .co-m-nav-title--detail {
+    background: var(--pf-global--BackgroundColor--100); // apply background as if this was the first <PageSection> with light variation
+    margin-top: 0; // reset margin and making it a padding instead so it looks like a page section
+    padding-top: 1.5em;
+    border-bottom-color: var(--pf-global--BorderColor--100); // use standard border instead of custom existing #ccc
+  }
+
+  .co-dashboard-body {
+    background: transparent; // remove this so background-color--200 shows through from the parent page section
+  }
+
+  .co-namespace-dropdown__menu-toggle {
+    padding-left: var(--pf-global--spacer--md) !important; // add back default padding that has been removed - pf component css loaded before overrides, needs important
+    padding-right: var(--pf-global--spacer--md) !important; // add back default padding that has been removed
+  }
+
+  .odc-namespaced-page__content {
+    background: transparent !important; // add dashboard page - let page section background show. The component styles are overriding this stylesheet, so added important
+  }
+
+  .odc-add-card-item__icon {
+    fill: #fff; // add dashboard icon color
+  }
+
+  .ocs-getting-started-card > .pf-c-title {
+    color: var(--pf-global--primary-color--100) !important; // add getting started title color
+  }
+
+  .monitoring-dashboards__legend-wrap text tspan {
+    fill: var(--pf-global--Color--200);
+  }
+
+  .co-namespace-bar {
+    border-bottom-color: var(--pf-global--BorderColor--100); // pipelines list page, border under dropdown at top
+  }
+
+  .co-m-horizontal-nav__menu-item a, .co-m-horizontal-nav__menu-item button {
+    color: var(--pf-global--Color--200);
+
+    &:hover,
+    &:focus {
+      color: var(--pf-global--Color--100);
+    }
+  }
 }
